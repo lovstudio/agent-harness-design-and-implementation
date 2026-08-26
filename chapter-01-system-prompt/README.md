@@ -81,6 +81,19 @@ Anthropic 官方明确表示，Claude Code 当前的内部 System Prompt 不公�
 
 下面涉及 Claude Code 默认正文的分析，来自这份历史快照；涉及今天还能使用哪些控制入口，则以当前 `2.1.233` CLI 和官方文档为准。
 
+这一次，我不准备只给你看我的转述。
+
+本文使用的四份材料已经和正文一起放进 GitHub，并固定到同一次提交：
+
+- [Codex `gpt-5.6-sol` base instructions](prompts/codex-gpt-5.6-sol-base-instructions.md)
+- [Claude Code `2.1.88` System Prompt Builder](prompts/claude-code-2.1.88-system-prompt-builder.ts)
+- [Pi `0.73.1` `buildSystemPrompt()`](prompts/pi-0.73.1-system-prompt-builder.ts)
+- [DSH `0.1.0-rc.8` rendered System Prompt](prompts/dsh-0.1.0-rc.8-rendered-system-prompt.md)
+
+你可以在 [LovStudio Prompt Review](https://lovstudio.ai/prompts?source=agent-harness-book) 里直接查看、搜索和复制全文，也可以回到 [GitHub 仓库](https://github.com/lovstudio/agent-harness-design-and-implementation/tree/main/chapter-01-system-prompt) 对照版本、来源与文章本身。
+
+这很重要。System Prompt 更新得太快，截图和二手转述很容易失去上下文。把原始材料、版本说明和文章放在一起，读者才能判断我到底是在复述事实，还是借事实表达自己的判断。
+
 ## 2. Design & Implementation
 
 ### 2.1 Codex：一位有主体感的同事
@@ -378,6 +391,14 @@ Pi 和 DSH 不是这两款产品的“开源平替”。
 这是《主流 Agent Harness 设计与实现》的第一期。
 
 这个系列不准备停在“谁更好用”的体验对比，也不会只搬运一份网上流传的 prompt。我的方法会保持一致：先回到源码、运行时 input 和真实控制接口，再讨论设计选择、产品品味，以及这些选择最终怎样落到用户身上。
+
+现在，它也不再只是一组散落的文章。
+
+我把整个系列做成了一本持续生长的开源小书：每一期对应一个独立 Chapter，正文、图片、来源说明和可以复核的原始材料放在同一个目录里；网站直接读取 GitHub 的固定 commit，不另外维护一份悄悄漂移的副本。
+
+- [在线阅读《主流 Agent Harness 的设计与实现》](https://lovstudio.ai/research/agent-harness)
+- [GitHub：lovstudio/agent-harness-design-and-implementation](https://github.com/lovstudio/agent-harness-design-and-implementation)
+- [Review 本期四份 System Prompt](https://lovstudio.ai/prompts?source=agent-harness-book)
 
 这一期最初来自 Yoda 里的一个小问题：工作区动态提示词，最后到底会进入 Codex 的哪一层？
 
