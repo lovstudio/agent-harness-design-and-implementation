@@ -392,14 +392,6 @@ Pi 和 DSH 不是这两款产品的“开源平替”。
 
 这个系列不准备停在“谁更好用”的体验对比，也不会只搬运一份网上流传的 prompt。我的方法会保持一致：先回到源码、运行时 input 和真实控制接口，再讨论设计选择、产品品味，以及这些选择最终怎样落到用户身上。
 
-现在，它也不再只是一组散落的文章。
-
-我把整个系列做成了一本持续生长的开源小书：每一期对应一个独立 Chapter，正文、图片、来源说明和可以复核的原始材料放在同一个目录里；网站直接读取 GitHub 的固定 commit，不另外维护一份悄悄漂移的副本。
-
-- [在线阅读《主流 Agent Harness 的设计与实现》](https://lovstudio.ai/research/agent-harness)
-- [GitHub：lovstudio/agent-harness-design-and-implementation](https://github.com/lovstudio/agent-harness-design-and-implementation)
-- [Review 本期四份 System Prompt](https://lovstudio.ai/prompts?source=agent-harness-book)
-
 这一期最初来自 Yoda 里的一个小问题：工作区动态提示词，最后到底会进入 Codex 的哪一层？
 
 我沿着调用链追到最后，答案是 `developer_instructions`，不是 `base_instructions`。这个实现背景并不复杂，却让我意识到，我们经常把“写了什么”和“写在哪里”混成同一个问题。
@@ -408,7 +400,25 @@ Pi 和 DSH 不是这两款产品的“开源平替”。
 
 base instructions 不是 Agent 的灵魂，却可能是 Harness 作者写得最诚实的一份产品说明书。
 
-### 4.2 关于手工川工作室（[lovstudio.ai](https://lovstudio.ai)）
+### 4.2 代码、原始 Prompt 和在线版
+
+如果你是在公众号里读到这里，这篇文章负责的是把判断讲清楚。
+
+但它没必要把 17,730 个字符的 Codex base instructions、Claude Code 的历史 TypeScript、Pi 的 Prompt Builder 和 DSH 的渲染结果，全部塞进正文里。
+
+所以，我把文章之外的材料拆成了三层：
+
+1. **GitHub 是源头。** 每一期对应一个独立 Chapter，正文、图片、版本说明和原始材料都放在同一个目录；后面的 Chapter 02、03，也会沿着这套结构继续写下去。
+2. **在线博客负责阅读。** 网站直接读取 GitHub 的固定 commit。文章更新到了哪一版，页面就明确显示哪一个 commit，不另外维护一份悄悄漂移的副本。
+3. **Prompt Review 负责核对。** 四份材料可以打开全文、搜索、复制，也可以跳回对应的固定版本。你不需要相信我的转述，可以自己看原文。
+
+- [在线阅读《主流 Agent Harness 的设计与实现》](https://lovstudio.ai/research/agent-harness)
+- [GitHub：lovstudio/agent-harness-design-and-implementation](https://github.com/lovstudio/agent-harness-design-and-implementation)
+- [Review 本期四份 System Prompt](https://lovstudio.ai/prompts?source=agent-harness-book)
+
+发布到公众号时，文末的「阅读原文」应当指向本期在线版。那里不是这篇文章的重复发布，而是继续往源码、版本和后续章节走的入口。
+
+### 4.3 关于手工川工作室（[lovstudio.ai](https://lovstudio.ai)）
 
 手工川工作室，官网：Lovstudio.ai，是一个长期实践 AI Coding、Agent Harness 和个人超级生产力的独立工作室。
 
