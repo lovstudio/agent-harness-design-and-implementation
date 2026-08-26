@@ -1,0 +1,14 @@
+{
+  "schema": "lovstudio/agent-harness-chapter/v1",
+  "number": 1,
+  "slug": "chapter-01-system-prompt",
+  "title": "System Prompt",
+  "displayTitle": "主流 Agent Harness 设计与实现 01：System Prompt",
+  "summary": "对比 Codex、Claude Code、Pi 与 DSH 如何设计、组装和开放 System Prompt。",
+  "publishedAt": "2026-08-26",
+  "status": "published",
+  "article": "README.md",
+  "prompts": "prompts/index.json",
+  "cover": "assets/agent-harness-cards/agent-harness-radar.png"
+}
+

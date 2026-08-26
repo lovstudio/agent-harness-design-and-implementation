@@ -1,0 +1,56 @@
+{
+  "template": "art-system-card",
+  "language": "zh-CN",
+  "series": {
+    "name": "主流 Agent Harness",
+    "subtitle": "SYSTEM PROMPT / 01"
+  },
+  "number": "04 / 04",
+  "category": "协议",
+  "title": "DSH",
+  "subtitle": "PROMPT AS INFRASTRUCTURE",
+  "visual": {
+    "path": "dsh-visual-web.png",
+    "alt": "紫色模块沿注册表轨道插入系统，其中一个完整模块向前覆盖其他模块",
+    "caption_left": "谁实现，谁说明",
+    "caption_right": "Prompt 即基础设施"
+  },
+  "background": "DSH 把 System Prompt 做成注册表。插件各自贡献 section，管理顺序、作用域和覆盖；开放的是整条装配权，而非一份默认文本。",
+  "prompt": "让 [SUBJECT] 的能力插件各自注册 guidance；用 name、order、scope、shadow 和 complete 管理每轮组装。",
+  "scenarios": [
+    "Harness 研究",
+    "插件架构",
+    "动态组装"
+  ],
+  "ratings": [
+    {
+      "label": "默认人格",
+      "score": 1
+    },
+    {
+      "label": "行为约束",
+      "score": 3
+    },
+    {
+      "label": "用户定制",
+      "score": 5
+    },
+    {
+      "label": "Prompt 组合",
+      "score": 5
+    },
+    {
+      "label": "跨任务一致",
+      "score": 2
+    }
+  ],
+  "brand": {
+    "name": "手工川工作室",
+    "site": "lovstudio.ai"
+  },
+  "theme": {
+    "accent": "#7443c9",
+    "accent_2": "#24213b",
+    "accent_3": "#54b9cf"
+  }
+}

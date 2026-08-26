@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>四种 Agent Harness 的 System Prompt 五维雷达图</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: #e8e2d7; }
+    body { padding: 32px; font-family: "Avenir Next", "PingFang SC", sans-serif; }
+    .figure {
+      position: relative;
+      width: 1600px;
+      height: 1200px;
+      overflow: hidden;
+      color: #1b1b19;
+      background:
+        linear-gradient(rgba(27,27,25,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27,27,25,.025) 1px, transparent 1px),
+        #fffdf8;
+      background-size: 32px 32px;
+      border: 1px solid #cfc7b9;
+    }
+    .top-rule {
+      position: absolute;
+      inset: 0 0 auto;
+      height: 10px;
+      background: linear-gradient(90deg, #2f6f57 0 25%, #c86c35 25% 50%, #45a8bd 50% 75%, #7443c9 75%);
+    }
+    header {
+      position: absolute;
+      inset: 70px 84px auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #d9d1c4;
+    }
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #8d8679;
+      font-size: 18px;
+      font-weight: 750;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-family: "Avenir Next Condensed", "PingFang SC", sans-serif;
+      font-size: 52px;
+      line-height: 1.08;
+      letter-spacing: -.025em;
+    }
+    .issue {
+      margin-top: 8px;
+      color: #615d54;
+      font: 700 19px/1.2 "SFMono-Regular", monospace;
+      letter-spacing: .08em;
+    }
+    svg { position: absolute; inset: 222px 48px 118px; width: 1504px; height: 860px; overflow: visible; }
+    .grid { fill: none; stroke: #d8d0c2; stroke-width: 1.5; }
+    .grid.outer { stroke: #aaa193; stroke-width: 2; }
+    .axis { stroke: #c7bfb2; stroke-width: 1.5; }
+    .axis-label { fill: #252421; font-size: 22px; font-weight: 750; }
+    .axis-help { fill: #8b8478; font-size: 14px; font-weight: 600; letter-spacing: .04em; }
+    .level { fill: #9b9387; font: 600 13px/1 "SFMono-Regular", monospace; }
+    .agent-shape { stroke-width: 5; stroke-linejoin: round; fill-opacity: .08; }
+    .agent-point { stroke: #fffdf8; stroke-width: 4; }
+    .legend-title { fill: #8b8478; font-size: 14px; font-weight: 750; letter-spacing: .12em; }
+    .legend-name { fill: #22211f; font-size: 25px; font-weight: 800; }
+    .legend-scores { fill: #777065; font: 650 15px/1.2 "SFMono-Regular", monospace; }
+    .legend-note { fill: #8b8478; font-size: 14px; }
+    footer {
+      position: absolute;
+      inset: auto 84px 48px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding-top: 22px;
+      border-top: 1px solid #d9d1c4;
+      color: #756e63;
+    }
+    footer strong { color: #252421; }
+    .read-note { max-width: 1120px; font-size: 17px; line-height: 1.6; }
+    .brand { font-size: 15px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+  <main class="figure" aria-label="四种 Agent Harness 的 System Prompt 五维雷达图">
+    <div class="top-rule"></div>
+    <header>
+      <div>
+        <p class="eyebrow">主流 Agent Harness 设计与实现 01 · System Prompt</p>
+        <h1>四种 Agent Harness 的五维设计雷达</h1>
+      </div>
+      <div class="issue">EDITOR RATING / 5</div>
+    </header>
+    <svg viewBox="0 0 1504 860" role="img" aria-labelledby="chart-title chart-desc">
+      <title id="chart-title">Codex、Claude Code、Pi 与 DSH 的五维雷达图</title>
+      <desc id="chart-desc">五个维度是默认人格、行为约束、用户定制、Prompt 组合和跨任务一致。分数越高只表示该特征越强。</desc>
+      <g id="radar"></g>
+    </svg>
+    <footer>
+      <div class="read-note"><strong>读图：</strong>越靠外，只代表这项特征在默认 System Prompt 设计中越强、越明显；它不是综合质量，也不是“越大越好”。</div>
+      <div class="brand">LOVSTUDIO.AI</div>
+    </footer>
+  </main>
+  <script>
+    const metrics = [
+      { label: "默认人格", help: "persona" },
+      { label: "行为约束", help: "constraints" },
+      { label: "用户定制", help: "customization" },
+      { label: "Prompt 组合", help: "composition" },
+      { label: "跨任务一致", help: "consistency" }
+    ];
+    const agents = [
+      { name: "Codex", color: "#2f6f57", scores: [5, 5, 3, 3, 5] },
+      { name: "Claude Code", color: "#c86c35", scores: [2, 5, 4, 4, 5] },
+      { name: "Pi", color: "#45a8bd", scores: [1, 2, 5, 4, 2] },
+      { name: "DSH", color: "#7443c9", scores: [1, 3, 5, 5, 2] }
+    ];
+    const svg = document.getElementById("radar");
+    const ns = "http://www.w3.org/2000/svg";
+    const center = { x: 600, y: 438 };
+    const radius = 318;
+    const angle = index => -Math.PI / 2 + index * Math.PI * 2 / metrics.length;
+    const point = (index, value, extra = 0) => ({
+      x: center.x + Math.cos(angle(index)) * (radius * value / 5 + extra),
+      y: center.y + Math.sin(angle(index)) * (radius * value / 5 + extra)
+    });
+    const element = (name, attrs = {}, text = "") => {
+      const node = document.createElementNS(ns, name);
+      Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
+      if (text) node.textContent = text;
+      return node;
+    };
+    const points = values => values.map((value, index) => {
+      const p = point(index, value);
+      return `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
+    }).join(" ");
+
+    for (let level = 1; level <= 5; level += 1) {
+      svg.appendChild(element("polygon", {
+        points: points(metrics.map(() => level)),
+        class: `grid${level === 5 ? " outer" : ""}`
+      }));
+      const levelPoint = point(0, level);
+      svg.appendChild(element("text", { x: center.x + 9, y: levelPoint.y + 5, class: "level" }, String(level)));
+    }
+
+    metrics.forEach((metric, index) => {
+      const outer = point(index, 5);
+      const label = point(index, 5, 66);
+      const anchor = label.x < center.x - 25 ? "end" : label.x > center.x + 25 ? "start" : "middle";
+      svg.appendChild(element("line", { x1: center.x, y1: center.y, x2: outer.x, y2: outer.y, class: "axis" }));
+      svg.appendChild(element("text", { x: label.x, y: label.y, "text-anchor": anchor, class: "axis-label" }, metric.label));
+      svg.appendChild(element("text", { x: label.x, y: label.y + 24, "text-anchor": anchor, class: "axis-help" }, metric.help));
+    });
+
+    agents.forEach(agent => {
+      svg.appendChild(element("polygon", {
+        points: points(agent.scores),
+        class: "agent-shape",
+        fill: agent.color,
+        stroke: agent.color
+      }));
+      agent.scores.forEach((score, index) => {
+        const p = point(index, score);
+        svg.appendChild(element("circle", { cx: p.x, cy: p.y, r: 7, fill: agent.color, class: "agent-point" }));
+      });
+    });
+
+    const legendX = 1080;
+    const legendY = 250;
+    svg.appendChild(element("text", { x: legendX, y: legendY - 50, class: "legend-title" }, "同一维度顺序 / SAME AXIS ORDER"));
+    agents.forEach((agent, index) => {
+      const y = legendY + index * 112;
+      svg.appendChild(element("line", { x1: legendX, y1: y, x2: legendX + 56, y2: y, stroke: agent.color, "stroke-width": 8, "stroke-linecap": "round" }));
+      svg.appendChild(element("text", { x: legendX + 78, y: y + 8, class: "legend-name" }, agent.name));
+      svg.appendChild(element("text", { x: legendX + 78, y: y + 36, class: "legend-scores" }, agent.scores.join(" · ")));
+    });
+    svg.appendChild(element("text", { x: legendX, y: legendY + 455, class: "legend-note" }, "轴序：人格 / 约束 / 定制 / 组合 / 一致"));
+  </script>
+</body>
+</html>

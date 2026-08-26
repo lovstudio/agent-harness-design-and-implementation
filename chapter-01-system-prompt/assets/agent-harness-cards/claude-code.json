@@ -1,0 +1,56 @@
+{
+  "template": "art-system-card",
+  "language": "zh-CN",
+  "series": {
+    "name": "主流 Agent Harness",
+    "subtitle": "SYSTEM PROMPT / 01"
+  },
+  "number": "02 / 04",
+  "category": "克制",
+  "title": "Claude Code",
+  "subtitle": "THE DISCIPLINED ENGINEER",
+  "visual": {
+    "path": "claude-code-visual.png",
+    "alt": "精密工具只在橙色边界内调整一枚齿轮，边界外的零件保持不动",
+    "caption_left": "只改该改的",
+    "caption_right": "验证后再说"
+  },
+  "background": "Claude Code 分层组装稳定规则与会话上下文，再用 anti-overengineering 压住模型加戏。它最关心 scope、可逆性和验证。",
+  "prompt": "处理 [SUBJECT] 前先读代码；只做必要的最小改动，不顺手重构，不为假想未来造抽象；失败先诊断，完成后验证并如实回报。",
+  "scenarios": [
+    "成熟仓库",
+    "局部修复",
+    "最小 Diff"
+  ],
+  "ratings": [
+    {
+      "label": "默认人格",
+      "score": 2
+    },
+    {
+      "label": "行为约束",
+      "score": 5
+    },
+    {
+      "label": "用户定制",
+      "score": 4
+    },
+    {
+      "label": "Prompt 组合",
+      "score": 4
+    },
+    {
+      "label": "跨任务一致",
+      "score": 5
+    }
+  ],
+  "brand": {
+    "name": "手工川工作室",
+    "site": "lovstudio.ai"
+  },
+  "theme": {
+    "accent": "#c86c35",
+    "accent_2": "#615c54",
+    "accent_3": "#d9c6a4"
+  }
+}

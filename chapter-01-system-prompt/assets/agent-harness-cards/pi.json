@@ -1,0 +1,57 @@
+{
+  "template": "art-system-card",
+  "language": "zh-CN",
+  "series": {
+    "name": "主流 Agent Harness",
+    "subtitle": "SYSTEM PROMPT / 01"
+  },
+  "number": "03 / 04",
+  "category": "边界",
+  "title": "Pi",
+  "subtitle": "THE EMOTIONLESS BOOTLOADER",
+  "visual": {
+    "path": "pi-visual.png",
+    "alt": "空旷的黑色空间里，一个开放框架容纳着极简几何核心，周围散落少量工具模块",
+    "caption_left": "骨架极薄",
+    "caption_right": "人格留白"
+  },
+  "background": "Pi 的默认 prompt 更像 bootloader：交代身份、工具、路径和项目上下文，然后停手。它拒绝替所有模型预设同一种人格，把定义权留给模型、项目和用户。",
+  "prompt": "围绕 [SUBJECT] 只注入这一轮真实可用的工具、路径与项目上下文；保持回复简洁、文件路径明确，其余人格、审美和工作哲学由当前模型与项目规则决定。",
+  "scenarios": [
+    "自由切换模型",
+    "自定义 SYSTEM.md",
+    "扩展与 Skill 实验",
+    "Harness 教学研究"
+  ],
+  "ratings": [
+    {
+      "label": "默认人格",
+      "score": 1
+    },
+    {
+      "label": "行为约束",
+      "score": 2
+    },
+    {
+      "label": "用户定制",
+      "score": 5
+    },
+    {
+      "label": "Prompt 组合",
+      "score": 4
+    },
+    {
+      "label": "跨任务一致",
+      "score": 2
+    }
+  ],
+  "brand": {
+    "name": "手工川工作室",
+    "site": "lovstudio.ai"
+  },
+  "theme": {
+    "accent": "#45a8bd",
+    "accent_2": "#34414a",
+    "accent_3": "#9eb7bd"
+  }
+}

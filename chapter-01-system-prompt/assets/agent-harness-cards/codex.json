@@ -1,0 +1,57 @@
+{
+  "template": "art-system-card",
+  "language": "zh-CN",
+  "series": {
+    "name": "主流 Agent Harness",
+    "subtitle": "SYSTEM PROMPT / 01"
+  },
+  "number": "01 / 04",
+  "category": "关系",
+  "title": "Codex",
+  "subtitle": "A COLLEAGUE WITH A POINT OF VIEW",
+  "visual": {
+    "path": "codex-visual.png",
+    "alt": "两个半透明的抽象主体在同一张工程工作台上协作，中间由一条绿色光线连接",
+    "caption_left": "关系先于动作",
+    "caption_right": "主体感很重"
+  },
+  "background": "Codex 把人格、沟通、权限、安全和 Skill 协议写进同一份员工手册。它不只要求任务做对，还要求 Agent 像一个有连续人格的同事那样与你协作。",
+  "prompt": "围绕 [SUBJECT] 先理解用户处境与目标，说明准备怎么做；执行中持续更新，区分回答、诊断与修改权限，完成后给出已验证的结果、边界和下一步。",
+  "scenarios": [
+    "模糊需求协作",
+    "长任务推进",
+    "复杂仓库改造",
+    "需要过程可见"
+  ],
+  "ratings": [
+    {
+      "label": "默认人格",
+      "score": 5
+    },
+    {
+      "label": "行为约束",
+      "score": 5
+    },
+    {
+      "label": "用户定制",
+      "score": 3
+    },
+    {
+      "label": "Prompt 组合",
+      "score": 3
+    },
+    {
+      "label": "跨任务一致",
+      "score": 5
+    }
+  ],
+  "brand": {
+    "name": "手工川工作室",
+    "site": "lovstudio.ai"
+  },
+  "theme": {
+    "accent": "#2f6f57",
+    "accent_2": "#d6c7a3",
+    "accent_3": "#c9893c"
+  }
+}

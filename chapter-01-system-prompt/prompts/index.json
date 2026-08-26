@@ -1,0 +1,55 @@
+{
+  "schema": "lovstudio/agent-harness-prompts/v1",
+  "chapter": "chapter-01-system-prompt",
+  "entries": [
+    {
+      "id": "codex-gpt-5.6-sol-base-instructions",
+      "harness": "Codex",
+      "title": "Codex gpt-5.6-sol base instructions",
+      "summary": "Codex CLI 0.149.1 使用期间，模型目录为 gpt-5.6-sol 下发的完整 instructions template。",
+      "version": "codex-cli 0.149.1 / catalog fetched 2026-08-26",
+      "artifactKind": "rendered-template",
+      "path": "chapter-01-system-prompt/prompts/codex-gpt-5.6-sol-base-instructions.md",
+      "language": "en",
+      "upstream": "OpenAI Codex model catalog",
+      "upstreamUrl": "https://github.com/openai/codex"
+    },
+    {
+      "id": "claude-code-2.1.88-system-prompt-builder",
+      "harness": "Claude Code",
+      "title": "Claude Code 2.1.88 system prompt builder",
+      "summary": "2026-03-31 npm source map 历史快照中的 constants/prompts.ts，展示默认 System Prompt 的静态与动态 sections 如何组装。",
+      "version": "2.1.88 historical source-map snapshot",
+      "artifactKind": "builder-source",
+      "path": "chapter-01-system-prompt/prompts/claude-code-2.1.88-system-prompt-builder.ts",
+      "language": "en",
+      "upstream": "Anthropic Claude Code historical npm package",
+      "upstreamUrl": "https://code.claude.com/docs/en/overview"
+    },
+    {
+      "id": "pi-0.73.1-system-prompt-builder",
+      "harness": "Pi",
+      "title": "Pi 0.73.1 buildSystemPrompt()",
+      "summary": "Pi v0.73.1 公开源码中负责组装工具、guidelines、项目上下文、Skills、日期和工作目录的完整函数。",
+      "version": "v0.73.1 / 781152fc",
+      "artifactKind": "builder-source",
+      "path": "chapter-01-system-prompt/prompts/pi-0.73.1-system-prompt-builder.ts",
+      "language": "en",
+      "upstream": "earendil-works/pi",
+      "upstreamUrl": "https://github.com/earendil-works/pi/tree/v0.73.1"
+    },
+    {
+      "id": "dsh-0.1.0-rc.8-rendered-system-prompt",
+      "harness": "DSH",
+      "title": "DSH 0.1.0-rc.8 rendered system prompt",
+      "summary": "DeepSeek Harness dsh-v0.1.0-rc.8 的 text-turn 测试快照，展示 identity、deployment persona 与各工具插件 sections 组合后的真实文本。",
+      "version": "dsh-v0.1.0-rc.8 / 141eb6fe",
+      "artifactKind": "rendered-snapshot",
+      "path": "chapter-01-system-prompt/prompts/dsh-0.1.0-rc.8-rendered-system-prompt.md",
+      "language": "en",
+      "upstream": "deepseek-ai/deepseek-harness",
+      "upstreamUrl": "https://github.com/deepseek-ai/deepseek-harness/tree/dsh-v0.1.0-rc.8"
+    }
+  ]
+}
+
